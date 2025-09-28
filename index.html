@@ -35,10 +35,29 @@
       </div>
     </div>
     <div class="container">
+      <!-- Static welcome message -->
+      <p class="welcome-message">
+        Welcome! Please check in below to join your team.
+      </p>
       <!-- Feedback message -->
       <p id="greeting"></p>
 
       <!-- Check-in form -->
+      <script>
+        const checkInBtn = document.getElementById("checkInBtn");
+        const attendeeNameInput = document.getElementById("attendeeName");
+        const greetingDiv = document.getElementById("greeting");
+
+        checkInBtn.addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent form submission
+          const name = attendeeNameInput.value.trim();
+          if (name) {
+            greetingDiv.textContent = `Hello, ${name}! Thanks for checking in.`;
+          } else {
+            greetingDiv.textContent = "Please enter your name.";
+          }
+        });
+      </script>
       <form class="check-in" id="checkInForm">
         <label for="attendeeName" class="form-label">Attendee Check-In</label>
         <div class="form-group">
